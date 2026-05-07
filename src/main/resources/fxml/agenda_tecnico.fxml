@@ -1,0 +1,73 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.control.*?>
+
+<BorderPane xmlns:fx="http://javafx.com/fxml"
+            fx:controller="com.demoapp.controller.AgendaController"
+            stylesheets="@../css/dashboard.css"
+            style="-fx-background-color:#0d1117;">
+    <top>
+        <HBox styleClass="topbar" alignment="CENTER_LEFT" spacing="16">
+            <Label fx:id="lblReloj" text="00:00:00" styleClass="topbar-clock"/>
+            <Region HBox.hgrow="ALWAYS"/>
+            <StackPane styleClass="topbar-avatar">
+                <Label fx:id="lblUsuario" text="USER" styleClass="topbar-avatar-label"/>
+            </StackPane>
+        </HBox>
+    </top>
+    <left>
+        <VBox styleClass="sidebar" spacing="0">
+            <Label text="FixLab" styleClass="sidebar-logo"/>
+            <Label text="Taller de reparaciones" styleClass="sidebar-subtitle"/>
+            <Region style="-fx-background-color:#21262d;-fx-pref-height:1px;-fx-min-height:1px;"/>
+            <Label text="NAVEGACIÓN" styleClass="sidebar-section"/>
+            <Button text="🏠  Dashboard"    onAction="#irDashboard"    styleClass="sidebar-btn"/>
+            <Button text="👤  Clientes"     onAction="#irClientes"     styleClass="sidebar-btn"/>
+            <Button text="🔧  Reparaciones" onAction="#irReparaciones" styleClass="sidebar-btn"/>
+            <Button text="📅  Agenda"       onAction="#irAgenda"       styleClass="sidebar-btn sidebar-btn-active"/>
+            <Button text="🧾  Presupuestos" onAction="#irPresupuestos" styleClass="sidebar-btn"/>
+            <Region VBox.vgrow="ALWAYS"/>
+            <Region style="-fx-background-color:#21262d;-fx-pref-height:1px;-fx-min-height:1px;"/>
+            <Button text="⏻  Cerrar sesión" onAction="#onLogout" styleClass="btn-logout"/>
+        </VBox>
+    </left>
+    <center>
+        <VBox styleClass="content-area" spacing="20">
+
+            <HBox alignment="CENTER_LEFT">
+                <VBox spacing="4">
+                    <Label text="Agenda del técnico" styleClass="page-title"/>
+                    <Label text="Reparaciones asignadas y su estado" styleClass="page-subtitle"/>
+                </VBox>
+                <Region HBox.hgrow="ALWAYS"/>
+                <Button text="+ Nueva cita" onAction="#onNuevaCita" styleClass="btn-primary"/>
+            </HBox>
+
+            <HBox spacing="12" alignment="CENTER_LEFT">
+                <Button text="Ver todas" onAction="#onVerTodas" styleClass="btn-secondary"/>
+                <ComboBox fx:id="filtroEstado" promptText="Filtrar por estado"
+                          onAction="#onFiltrarEstado" styleClass="combo-field"
+                          prefWidth="190" minWidth="150"/>
+                <Region HBox.hgrow="ALWAYS"/>
+                <Label fx:id="lblTotal" text="0 reparaciones activas" styleClass="count-label"/>
+            </HBox>
+
+            <TableView fx:id="tablaAgenda" VBox.vgrow="ALWAYS"
+                       >
+                <columns>
+                    <TableColumn fx:id="colId"            text="ID"            minWidth="55"  maxWidth="70"/>
+                    <TableColumn fx:id="colCliente"       text="Cliente"       minWidth="130"/>
+                    <TableColumn fx:id="colDispositivo"   text="Dispositivo"   minWidth="120"/>
+                    <TableColumn fx:id="colDescripcion"   text="Descripción"   minWidth="160"/>
+                    <TableColumn fx:id="colEstado"        text="Estado"        minWidth="130" maxWidth="170"/>
+                    <TableColumn fx:id="colFecha"         text="Fecha entrada" minWidth="100" maxWidth="130"/>
+                    <TableColumn fx:id="colCambiarEstado" text="Cambiar"       minWidth="150" maxWidth="180"/>
+                </columns>
+                <placeholder>
+                    <Label text="No hay reparaciones asignadas" styleClass="page-subtitle"/>
+                </placeholder>
+            </TableView>
+
+        </VBox>
+    </center>
+</BorderPane>

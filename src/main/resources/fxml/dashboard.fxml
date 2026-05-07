@@ -1,0 +1,87 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.control.*?>
+
+<BorderPane xmlns:fx="http://javafx.com/fxml"
+            fx:controller="com.demoapp.controller.DashboardController"
+            stylesheets="@../css/dashboard.css"
+            style="-fx-background-color:#0d1117;">
+    <top>
+        <HBox styleClass="topbar" alignment="CENTER_LEFT" spacing="16">
+            <Label fx:id="lblReloj" text="00:00:00" styleClass="topbar-clock"/>
+            <Region HBox.hgrow="ALWAYS"/>
+            <StackPane styleClass="topbar-avatar">
+                <Label fx:id="lblUsuario" text="USER" styleClass="topbar-avatar-label"/>
+            </StackPane>
+        </HBox>
+    </top>
+    <left>
+        <VBox styleClass="sidebar" spacing="0">
+            <Label text="FixLab" styleClass="sidebar-logo"/>
+            <Label text="Taller de reparaciones" styleClass="sidebar-subtitle"/>
+            <Region style="-fx-background-color:#21262d;-fx-pref-height:1px;-fx-min-height:1px;"/>
+            <Label text="NAVEGACIÓN" styleClass="sidebar-section"/>
+            <Button text="🏠  Dashboard"    onAction="#irDashboard"    styleClass="sidebar-btn sidebar-btn-active"/>
+            <Button text="👤  Clientes"     onAction="#irClientes"     styleClass="sidebar-btn"/>
+            <Button text="🔧  Reparaciones" onAction="#irReparaciones" styleClass="sidebar-btn"/>
+            <Button text="📅  Agenda"       onAction="#irAgenda"       styleClass="sidebar-btn"/>
+            <Button text="🧾  Presupuestos" onAction="#irPresupuestos" styleClass="sidebar-btn"/>
+            <Region VBox.vgrow="ALWAYS"/>
+            <Region style="-fx-background-color:#21262d;-fx-pref-height:1px;-fx-min-height:1px;"/>
+            <Button text="⏻  Cerrar sesión" onAction="#onLogout" styleClass="btn-logout"/>
+        </VBox>
+    </left>
+    <center>
+        <ScrollPane fitToWidth="true" fitToHeight="false"
+                    style="-fx-background:#0d1117;-fx-background-color:#0d1117;">
+            <VBox styleClass="content-area" spacing="24">
+
+                <HBox alignment="CENTER_LEFT">
+                    <VBox spacing="4">
+                        <Label text="Panel de control" styleClass="page-title"/>
+                        <Label text="Resumen general del sistema" styleClass="page-subtitle"/>
+                    </VBox>
+                </HBox>
+
+                <!-- KPIs -->
+                <HBox spacing="16">
+                    <VBox styleClass="kpi-card" spacing="8" HBox.hgrow="ALWAYS">
+                        <Label text="ÓRDENES ACTIVAS" styleClass="kpi-title"/>
+                        <Label fx:id="lblOrdenesActivas" text="0" styleClass="kpi-value"/>
+                    </VBox>
+                    <VBox styleClass="kpi-card" spacing="8" HBox.hgrow="ALWAYS">
+                        <Label text="CLIENTES TOTALES" styleClass="kpi-title"/>
+                        <Label fx:id="lblClientes" text="0" styleClass="kpi-value"/>
+                    </VBox>
+                    <VBox styleClass="kpi-card" spacing="8" HBox.hgrow="ALWAYS">
+                        <Label text="ENTRADAS HOY" styleClass="kpi-title"/>
+                        <Label fx:id="lblReparacionesHoy" text="0" styleClass="kpi-value"/>
+                    </VBox>
+                </HBox>
+
+                <!-- Tabla recientes -->
+                <VBox spacing="12" styleClass="panel" VBox.vgrow="ALWAYS">
+                    <HBox alignment="CENTER_LEFT">
+                        <Label text="Órdenes recientes" styleClass="panel-title"/>
+                        <Region HBox.hgrow="ALWAYS"/>
+                        <Label text="Ver todas →" onMouseClicked="#irReparacionesLink"
+                               style="-fx-text-fill:#58a6ff;-fx-font-size:12px;-fx-cursor:hand;"/>
+                    </HBox>
+                    <TableView fx:id="tablaRecientes" prefHeight="320" VBox.vgrow="ALWAYS"
+                               >
+                        <columns>
+                            <TableColumn fx:id="colId"          text="ID"          maxWidth="80" minWidth="60"/>
+                            <TableColumn fx:id="colCliente"     text="Cliente"     minWidth="160"/>
+                            <TableColumn fx:id="colDispositivo" text="Dispositivo" minWidth="160"/>
+                            <TableColumn fx:id="colEstado"      text="Estado"      minWidth="140"/>
+                        </columns>
+                        <placeholder>
+                            <Label text="Sin órdenes recientes" styleClass="page-subtitle"/>
+                        </placeholder>
+                    </TableView>
+                </VBox>
+
+            </VBox>
+        </ScrollPane>
+    </center>
+</BorderPane>

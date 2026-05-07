@@ -1,0 +1,353 @@
+/* ═══════════════════════════════════════════════════════
+   FixLab — Design System v3.0  (responsive + márgenes)
+   ═══════════════════════════════════════════════════════ */
+
+/* ── Sidebar — ancho FIJO, nunca se encoge ───────────── */
+.sidebar {
+    -fx-background-color: #161b22;
+    -fx-min-width: 210px;
+    -fx-pref-width: 210px;
+    -fx-max-width: 210px;
+}
+
+.sidebar-logo {
+    -fx-text-fill: #00ff88;
+    -fx-font-size: 20px;
+    -fx-font-weight: bold;
+    -fx-padding: 22px 20px 4px 20px;
+}
+
+.sidebar-subtitle {
+    -fx-text-fill: #3d444d;
+    -fx-font-size: 10px;
+    -fx-padding: 0 20px 14px 20px;
+}
+
+.sidebar-section {
+    -fx-text-fill: #3d444d;
+    -fx-font-size: 10px;
+    -fx-font-weight: bold;
+    -fx-padding: 14px 20px 6px 20px;
+}
+
+.sidebar-btn {
+    -fx-background-color: transparent;
+    -fx-text-fill: #8b949e;
+    -fx-font-size: 13px;
+    -fx-alignment: CENTER_LEFT;
+    -fx-padding: 10px 20px;
+    -fx-cursor: hand;
+    -fx-background-radius: 0;
+    -fx-border-color: transparent;
+    -fx-min-width: 210px;
+    -fx-pref-width: 210px;
+    -fx-max-width: 210px;
+    -fx-graphic-text-gap: 8px;
+}
+
+.sidebar-btn:hover {
+    -fx-background-color: #21262d;
+    -fx-text-fill: #c9d1d9;
+}
+
+.sidebar-btn-active {
+    -fx-background-color: #21262d;
+    -fx-text-fill: #00ff88;
+    -fx-border-color: #00ff88 transparent transparent transparent;
+    -fx-border-width: 0 0 0 3px;
+    -fx-padding: 10px 20px 10px 17px;
+}
+
+.sidebar-btn-active:hover {
+    -fx-background-color: #21262d;
+    -fx-text-fill: #00ff88;
+}
+
+.btn-logout {
+    -fx-background-color: transparent;
+    -fx-text-fill: #ff4757;
+    -fx-font-size: 13px;
+    -fx-alignment: CENTER_LEFT;
+    -fx-padding: 10px 20px;
+    -fx-cursor: hand;
+    -fx-background-radius: 0;
+    -fx-min-width: 210px;
+    -fx-pref-width: 210px;
+    -fx-max-width: 210px;
+}
+
+.btn-logout:hover {
+    -fx-background-color: #ff475718;
+}
+
+/* ── Topbar — altura FIJA, nunca se achica ───────────── */
+.topbar {
+    -fx-background-color: #161b22;
+    -fx-padding: 0px 24px;
+    -fx-min-height: 54px;
+    -fx-pref-height: 54px;
+    -fx-max-height: 54px;
+    -fx-border-color: transparent transparent #21262d transparent;
+    -fx-border-width: 0 0 1px 0;
+}
+
+.topbar-clock {
+    -fx-text-fill: #58a6ff;
+    -fx-font-size: 13px;
+    -fx-font-family: 'Courier New';
+}
+
+.topbar-avatar {
+    -fx-background-color: #00ff88;
+    -fx-background-radius: 20px;
+    -fx-padding: 5px 14px;
+}
+
+.topbar-avatar-label {
+    -fx-text-fill: #0d1117;
+    -fx-font-weight: bold;
+    -fx-font-size: 12px;
+}
+
+/* ── Área de contenido — ocupa TODO el espacio libre ─── */
+.content-area {
+    -fx-background-color: #0d1117;
+    -fx-padding: 28px 32px 28px 32px;
+}
+
+.page-title {
+    -fx-text-fill: #c9d1d9;
+    -fx-font-size: 22px;
+    -fx-font-weight: bold;
+}
+
+.page-subtitle {
+    -fx-text-fill: #8b949e;
+    -fx-font-size: 12px;
+}
+
+/* ── Botones ─────────────────────────────────────────── */
+.btn-primary {
+    -fx-background-color: #00ff88;
+    -fx-text-fill: #0d1117;
+    -fx-font-weight: bold;
+    -fx-background-radius: 6px;
+    -fx-padding: 9px 18px;
+    -fx-cursor: hand;
+    -fx-font-size: 13px;
+}
+
+.btn-primary:hover { -fx-background-color: #00e07a; }
+
+.btn-secondary {
+    -fx-background-color: #21262d;
+    -fx-text-fill: #c9d1d9;
+    -fx-background-radius: 6px;
+    -fx-padding: 9px 16px;
+    -fx-cursor: hand;
+    -fx-font-size: 13px;
+    -fx-border-color: #30363d;
+    -fx-border-radius: 6px;
+}
+
+.btn-secondary:hover { -fx-background-color: #30363d; }
+
+/* ── Campos ──────────────────────────────────────────── */
+.field-label {
+    -fx-text-fill: #8b949e;
+    -fx-font-size: 12px;
+}
+
+.input-field {
+    -fx-background-color: #161b22;
+    -fx-text-fill: #c9d1d9;
+    -fx-prompt-text-fill: #3d444d;
+    -fx-border-color: #30363d;
+    -fx-border-radius: 6px;
+    -fx-background-radius: 6px;
+    -fx-padding: 9px 12px;
+    -fx-font-size: 13px;
+}
+
+.input-field:focused { -fx-border-color: #58a6ff; }
+
+.combo-field {
+    -fx-background-color: #161b22;
+    -fx-border-color: #30363d;
+    -fx-border-radius: 6px;
+    -fx-background-radius: 6px;
+}
+
+.search-field {
+    -fx-background-color: #161b22;
+    -fx-text-fill: #c9d1d9;
+    -fx-prompt-text-fill: #3d444d;
+    -fx-border-color: #30363d;
+    -fx-border-radius: 6px;
+    -fx-background-radius: 6px;
+    -fx-padding: 9px 14px;
+    -fx-font-size: 13px;
+}
+
+.search-field:focused { -fx-border-color: #58a6ff; }
+
+.error-label {
+    -fx-text-fill: #ff4757;
+    -fx-font-size: 12px;
+}
+
+.count-label {
+    -fx-text-fill: #8b949e;
+    -fx-font-size: 12px;
+}
+
+/* ── KPI Cards ───────────────────────────────────────── */
+.kpi-card {
+    -fx-background-color: #161b22;
+    -fx-padding: 20px;
+    -fx-background-radius: 8px;
+    -fx-border-color: #21262d;
+    -fx-border-radius: 8px;
+}
+
+.kpi-title {
+    -fx-text-fill: #8b949e;
+    -fx-font-size: 11px;
+    -fx-font-weight: bold;
+}
+
+.kpi-value {
+    -fx-text-fill: #00ff88;
+    -fx-font-size: 30px;
+    -fx-font-weight: bold;
+}
+
+/* ── Panel ───────────────────────────────────────────── */
+.panel {
+    -fx-background-color: #161b22;
+    -fx-padding: 18px;
+    -fx-background-radius: 8px;
+    -fx-border-color: #21262d;
+    -fx-border-radius: 8px;
+}
+
+.panel-title {
+    -fx-text-fill: #c9d1d9;
+    -fx-font-size: 15px;
+    -fx-font-weight: bold;
+}
+
+/* ── Tabla — responsive, columnas se estiran ─────────── */
+.table-view {
+    -fx-background-color: transparent;
+    -fx-border-color: #21262d;
+    -fx-border-radius: 8px;
+    -fx-background-radius: 8px;
+}
+
+.table-view .column-header-background {
+    -fx-background-color: #161b22;
+    -fx-background-radius: 8px 8px 0 0;
+}
+
+.table-view .column-header {
+    -fx-background-color: transparent;
+    -fx-border-color: transparent;
+    -fx-size: 42px;
+}
+
+.table-view .column-header .label {
+    -fx-text-fill: #8b949e;
+    -fx-font-size: 11px;
+    -fx-font-weight: bold;
+    -fx-alignment: CENTER_LEFT;
+    -fx-padding: 0 12px;
+}
+
+.table-view .filler {
+    -fx-background-color: #161b22;
+}
+
+.table-view .table-row-cell {
+    -fx-background-color: #0d1117;
+    -fx-border-color: transparent transparent #21262d transparent;
+    -fx-table-cell-border-color: transparent;
+    -fx-cell-size: 42px;
+}
+
+.table-view .table-row-cell:odd  { -fx-background-color: #0d1117; }
+.table-view .table-row-cell:even { -fx-background-color: #161b2233; }
+
+.table-view .table-row-cell:hover {
+    -fx-background-color: #21262d;
+    -fx-cursor: hand;
+}
+
+.table-view .table-row-cell:selected { -fx-background-color: #1f6feb22; }
+
+.table-view .table-cell {
+    -fx-text-fill: #c9d1d9;
+    -fx-font-size: 13px;
+    -fx-padding: 10px 14px;
+    -fx-border-color: transparent;
+}
+
+/* Scrollbar tabla */
+.table-view .scroll-bar:vertical {
+    -fx-background-color: transparent;
+    -fx-pref-width: 6px;
+}
+.table-view .scroll-bar:vertical .track  { -fx-background-color: transparent; }
+.table-view .scroll-bar:vertical .thumb  { -fx-background-color: #30363d; -fx-background-radius: 10px; }
+.table-view .scroll-bar:vertical .thumb:hover { -fx-background-color: #484f58; }
+.table-view .scroll-bar:vertical .increment-button,
+.table-view .scroll-bar:vertical .decrement-button { -fx-pref-height: 0; -fx-opacity: 0; }
+
+/* ── Badges de estado ────────────────────────────────── */
+.badge {
+    -fx-padding: 3px 10px;
+    -fx-background-radius: 20px;
+    -fx-font-size: 11px;
+    -fx-font-weight: bold;
+}
+
+.badge-reparacion  { -fx-background-color: #388bfd22; -fx-text-fill: #58a6ff; }
+.badge-listo       { -fx-background-color: #23863633; -fx-text-fill: #00ff88; }
+.badge-espera      { -fx-background-color: #9e6a0333; -fx-text-fill: #e3b341; }
+.badge-entregado   { -fx-background-color: #21262d;   -fx-text-fill: #8b949e; }
+.badge-diagnostico { -fx-background-color: #6e40c933; -fx-text-fill: #bc8cff; }
+
+/* ── Diálogos ────────────────────────────────────────── */
+.dialog-pane {
+    -fx-background-color: #161b22;
+    -fx-border-color: #21262d;
+    -fx-border-radius: 8px;
+}
+
+.dialog-pane .content.label {
+    -fx-text-fill: #c9d1d9;
+    -fx-font-size: 13px;
+}
+
+.dialog-pane .button-bar .button {
+    -fx-background-color: #21262d;
+    -fx-text-fill: #c9d1d9;
+    -fx-background-radius: 6px;
+    -fx-cursor: hand;
+}
+
+.dialog-pane .button-bar .button:hover {
+    -fx-background-color: #00ff88;
+    -fx-text-fill: #0d1117;
+}
+
+/* ── ScrollPane ──────────────────────────────────────── */
+.scroll-pane,
+.scroll-pane > .viewport {
+    -fx-background-color: #0d1117;
+    -fx-background: #0d1117;
+}
+
+/* ── Modales ─────────────────────────────────────────── */
+.modal-title   { -fx-text-fill: #c9d1d9; -fx-font-size: 18px; -fx-font-weight: bold; }
+.modal-subtitle{ -fx-text-fill: #8b949e; -fx-font-size: 12px; }

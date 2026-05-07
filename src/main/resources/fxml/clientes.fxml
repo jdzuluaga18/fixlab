@@ -1,0 +1,82 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.control.*?>
+
+<BorderPane xmlns:fx="http://javafx.com/fxml"
+            fx:controller="com.demoapp.controller.ClientesController"
+            stylesheets="@../css/dashboard.css"
+            style="-fx-background-color:#0d1117;">
+    <top>
+        <HBox styleClass="topbar" alignment="CENTER_LEFT" spacing="16">
+            <Label fx:id="lblReloj" text="00:00:00" styleClass="topbar-clock"/>
+            <Region HBox.hgrow="ALWAYS"/>
+            <StackPane styleClass="topbar-avatar">
+                <Label fx:id="lblUsuario" text="USER" styleClass="topbar-avatar-label"/>
+            </StackPane>
+        </HBox>
+    </top>
+    <left>
+        <VBox styleClass="sidebar" spacing="0">
+            <Label text="FixLab" styleClass="sidebar-logo"/>
+            <Label text="Taller de reparaciones" styleClass="sidebar-subtitle"/>
+            <Region style="-fx-background-color:#21262d;-fx-pref-height:1px;-fx-min-height:1px;"/>
+            <Label text="NAVEGACIÓN" styleClass="sidebar-section"/>
+            <Button text="🏠  Dashboard"    onAction="#irDashboard"    styleClass="sidebar-btn"/>
+            <Button text="👤  Clientes"     onAction="#irClientes"     styleClass="sidebar-btn sidebar-btn-active"/>
+            <Button text="🔧  Reparaciones" onAction="#irReparaciones" styleClass="sidebar-btn"/>
+            <Button text="📅  Agenda"       onAction="#irAgenda"       styleClass="sidebar-btn"/>
+            <Button text="🧾  Presupuestos" onAction="#irPresupuestos" styleClass="sidebar-btn"/>
+            <Region VBox.vgrow="ALWAYS"/>
+            <Region style="-fx-background-color:#21262d;-fx-pref-height:1px;-fx-min-height:1px;"/>
+            <Button text="⏻  Cerrar sesión" onAction="#onLogout" styleClass="btn-logout"/>
+        </VBox>
+    </left>
+    <center>
+        <VBox styleClass="content-area" spacing="20">
+
+            <HBox alignment="CENTER_LEFT">
+                <VBox spacing="4">
+                    <Label text="Clientes" styleClass="page-title"/>
+                    <Label text="Gestión de clientes registrados" styleClass="page-subtitle"/>
+                </VBox>
+                <Region HBox.hgrow="ALWAYS"/>
+                <Button text="+ Nuevo cliente" onAction="#onNuevoCliente" styleClass="btn-primary"/>
+            </HBox>
+
+            <VBox spacing="8">
+                <HBox spacing="12" alignment="CENTER_LEFT">
+                    <TextField fx:id="campoBusqueda"
+                               promptText="🔍  Buscar por nombre, teléfono, email, dirección o notas..."
+                               onKeyReleased="#onBuscar"
+                               styleClass="search-field" HBox.hgrow="ALWAYS"/>
+                    <Label fx:id="lblTotal" text="0 clientes" styleClass="count-label"/>
+                </HBox>
+                <HBox spacing="8" alignment="CENTER_LEFT">
+                    <Label text="Busca por:" style="-fx-text-fill:#3d444d;-fx-font-size:11px;"/>
+                    <Label text="nombre"    style="-fx-background-color:#21262d;-fx-text-fill:#8b949e;-fx-padding:2px 8px;-fx-background-radius:10px;-fx-font-size:11px;"/>
+                    <Label text="apellidos" style="-fx-background-color:#21262d;-fx-text-fill:#8b949e;-fx-padding:2px 8px;-fx-background-radius:10px;-fx-font-size:11px;"/>
+                    <Label text="teléfono"  style="-fx-background-color:#21262d;-fx-text-fill:#8b949e;-fx-padding:2px 8px;-fx-background-radius:10px;-fx-font-size:11px;"/>
+                    <Label text="email"     style="-fx-background-color:#21262d;-fx-text-fill:#8b949e;-fx-padding:2px 8px;-fx-background-radius:10px;-fx-font-size:11px;"/>
+                    <Label text="dirección" style="-fx-background-color:#21262d;-fx-text-fill:#8b949e;-fx-padding:2px 8px;-fx-background-radius:10px;-fx-font-size:11px;"/>
+                    <Label text="notas"     style="-fx-background-color:#21262d;-fx-text-fill:#8b949e;-fx-padding:2px 8px;-fx-background-radius:10px;-fx-font-size:11px;"/>
+                </HBox>
+            </VBox>
+
+            <TableView fx:id="tablaClientes" VBox.vgrow="ALWAYS"
+                       >
+                <columns>
+                    <TableColumn fx:id="colNombre"    text="Nombre"    minWidth="120"/>
+                    <TableColumn fx:id="colApellidos" text="Apellidos" minWidth="120"/>
+                    <TableColumn fx:id="colTelefono"  text="Teléfono"  minWidth="110" maxWidth="140"/>
+                    <TableColumn fx:id="colEmail"     text="Email"     minWidth="160"/>
+                    <TableColumn fx:id="colDireccion" text="Dirección" minWidth="160"/>
+                    <TableColumn fx:id="colAcciones"  text="Acciones"  minWidth="90" maxWidth="110"/>
+                </columns>
+                <placeholder>
+                    <Label text="No se encontraron clientes" styleClass="page-subtitle"/>
+                </placeholder>
+            </TableView>
+
+        </VBox>
+    </center>
+</BorderPane>

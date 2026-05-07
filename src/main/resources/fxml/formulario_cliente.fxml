@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.control.*?>
+
+<VBox xmlns:fx="http://javafx.com/fxml"
+      fx:controller="com.demoapp.controller.FormularioClienteController"
+      stylesheets="@../css/dashboard.css"
+      spacing="14" prefWidth="480"
+      style="-fx-background-color: #0d1117; -fx-padding: 28px;">
+
+    <!-- TÍTULO -->
+    <Label fx:id="lblTitulo" text="Nuevo cliente" styleClass="modal-title"/>
+    <Label text="Rellena los datos del cliente" styleClass="modal-subtitle"/>
+    <Region prefHeight="4"/>
+
+    <!-- NOMBRE + APELLIDOS -->
+    <HBox spacing="12">
+        <VBox spacing="5" HBox.hgrow="ALWAYS">
+            <Label text="Nombre *" styleClass="field-label"/>
+            <TextField fx:id="campoNombre" promptText="Nombre" styleClass="input-field" maxWidth="Infinity"/>
+        </VBox>
+        <VBox spacing="5" HBox.hgrow="ALWAYS">
+            <Label text="Apellidos *" styleClass="field-label"/>
+            <TextField fx:id="campoApellidos" promptText="Apellidos" styleClass="input-field" maxWidth="Infinity"/>
+        </VBox>
+    </HBox>
+
+    <!-- TELÉFONO -->
+    <VBox spacing="5">
+        <Label text="Teléfono *" styleClass="field-label"/>
+        <TextField fx:id="campoTelefono" promptText="Ej: 612 345 678" styleClass="input-field" maxWidth="Infinity"/>
+    </VBox>
+
+    <!-- EMAIL -->
+    <VBox spacing="5">
+        <Label text="Email" styleClass="field-label"/>
+        <TextField fx:id="campoEmail" promptText="Ej: nombre@dominio.com" styleClass="input-field" maxWidth="Infinity"/>
+    </VBox>
+
+    <!-- DIRECCIÓN -->
+    <VBox spacing="5">
+        <Label text="Dirección" styleClass="field-label"/>
+        <TextField fx:id="campoDireccion" promptText="Ej: Calle Mayor 10, Madrid" styleClass="input-field" maxWidth="Infinity"/>
+    </VBox>
+
+    <!-- NOTAS PERSONALIZADAS -->
+    <VBox spacing="5">
+        <HBox alignment="CENTER_LEFT" spacing="8">
+            <Label text="📝  Notas del cliente" styleClass="field-label"/>
+            <Label text="(privadas, solo para el taller)"
+                   style="-fx-text-fill: #3d444d; -fx-font-size: 11px;"/>
+        </HBox>
+        <TextArea fx:id="campoNotas"
+                  promptText="Ej: Cliente puntual, prefiere contacto por WhatsApp, alérgico al polvo..."
+                  prefRowCount="4"
+                  wrapText="true"
+                  style="-fx-background-color: #161b22; -fx-text-fill: #c9d1d9;
+                         -fx-prompt-text-fill: #3d444d; -fx-border-color: #388bfd44;
+                         -fx-border-radius: 6px; -fx-background-radius: 6px;
+                         -fx-padding: 9px 12px; -fx-font-size: 13px;"/>
+    </VBox>
+
+    <!-- ERROR -->
+    <Label fx:id="lblError" text="" wrapText="true" styleClass="error-label"/>
+
+    <!-- BOTONES -->
+    <HBox spacing="10" alignment="CENTER_RIGHT">
+        <Button text="Cancelar" onAction="#onCancelar" styleClass="btn-secondary"/>
+        <Button text="Guardar cliente" onAction="#onGuardar" styleClass="btn-primary"/>
+    </HBox>
+
+</VBox>

@@ -1,0 +1,117 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.geometry.*?>
+
+<BorderPane xmlns:fx="http://javafx.com/fxml"
+            fx:controller="com.demoapp.controller.AgendaController"
+            stylesheets="@../css/dashboard.css"
+            style="-fx-background-color: #0d1117;">
+
+    <!-- TOPBAR -->
+    <top>
+        <HBox alignment="CENTER_LEFT" spacing="20"
+              style="-fx-padding: 12px 20px; -fx-background-color: #161b22;">
+
+            <Label text="FixLab"
+                   style="-fx-text-fill: #00ff88; -fx-font-size: 22px; -fx-font-weight: bold;"/>
+
+            <Region HBox.hgrow="ALWAYS"/>
+
+            <Label fx:id="lblReloj"
+                   text="00:00"
+                   style="-fx-text-fill: #58a6ff; -fx-font-size: 14px; -fx-font-family: 'Courier New';"/>
+
+            <StackPane style="-fx-background-color: #00ff88; -fx-background-radius: 20px;
+                               -fx-padding: 6px 10px;">
+                <Label fx:id="lblUsuario"
+                       text="USER"
+                       style="-fx-text-fill: #0d1117; -fx-font-weight: bold;"/>
+            </StackPane>
+        </HBox>
+    </top>
+
+    <!-- SIDEBAR -->
+    <left>
+        <VBox spacing="10"
+              style="-fx-background-color: #161b22; -fx-padding: 20px;">
+
+            <Label text="MENÚ"
+                   style="-fx-text-fill: #00ff88; -fx-font-size: 12px;
+                          -fx-font-family: 'Courier New'; -fx-font-weight: bold;"/>
+
+            <Button text="Dashboard"    onAction="#irDashboard"    styleClass="sidebar-btn"/>
+            <Button text="Clientes"     onAction="#irClientes"     styleClass="sidebar-btn"/>
+            <Button text="Reparaciones" onAction="#irReparaciones" styleClass="sidebar-btn"/>
+            <Button text="Agenda"       onAction="#irAgenda"       styleClass="sidebar-btn, sidebar-btn-active"/>
+
+            <Region VBox.vgrow="ALWAYS"/>
+
+            <Button text="Cerrar sesión"
+                    onAction="#onLogout"
+                    style="-fx-background-color: #ff4757; -fx-text-fill: white;
+                           -fx-background-radius: 6px; -fx-padding: 8px;"/>
+        </VBox>
+    </left>
+
+    <!-- CONTENIDO PRINCIPAL -->
+    <center>
+        <VBox spacing="20" style="-fx-padding: 24px; -fx-background-color: #0d1117;">
+
+            <!-- TÍTULO + BOTÓN NUEVO -->
+            <HBox alignment="CENTER_LEFT">
+                <VBox spacing="4">
+                    <Label text="Agenda"
+                           style="-fx-text-fill: #c9d1d9; -fx-font-size: 24px; -fx-font-weight: bold;"/>
+                    <Label text="Gestión de citas y turnos"
+                           style="-fx-text-fill: #8b949e; -fx-font-size: 13px;"/>
+                </VBox>
+                <Region HBox.hgrow="ALWAYS"/>
+                <Button text="+ Nueva cita"
+                        onAction="#onNuevaCita"
+                        style="-fx-background-color: #00ff88; -fx-text-fill: #0d1117;
+                               -fx-font-weight: bold; -fx-background-radius: 6px;
+                               -fx-padding: 10px 16px; -fx-cursor: hand;"/>
+            </HBox>
+
+            <!-- FILTROS -->
+            <HBox spacing="12" alignment="CENTER_LEFT">
+                <Button text="Todas"
+                        onAction="#onVerTodas"
+                        style="-fx-background-color: #21262d; -fx-text-fill: #c9d1d9;
+                               -fx-background-radius: 6px; -fx-padding: 8px 14px; -fx-cursor: hand;"/>
+                <Button text="Próximas"
+                        onAction="#onVerProximas"
+                        style="-fx-background-color: #21262d; -fx-text-fill: #c9d1d9;
+                               -fx-background-radius: 6px; -fx-padding: 8px 14px; -fx-cursor: hand;"/>
+                <DatePicker fx:id="filtroPorFecha"
+                            promptText="Filtrar por fecha"
+                            onAction="#onFiltrarFecha"
+                            style="-fx-background-color: #161b22; -fx-border-color: #21262d;
+                                   -fx-border-radius: 6px; -fx-background-radius: 6px;"/>
+                <Label fx:id="lblTotal"
+                       text="0 citas"
+                       style="-fx-text-fill: #8b949e; -fx-font-size: 12px;"/>
+            </HBox>
+
+            <!-- TABLA -->
+            <TableView fx:id="tablaCitas" VBox.vgrow="ALWAYS"
+                       style="-fx-background-color: #161b22;">
+                <columns>
+                    <TableColumn fx:id="colFecha"       text="Fecha"       prefWidth="120" sortable="true"/>
+                    <TableColumn fx:id="colHora"        text="Hora"        prefWidth="80"  sortable="true"/>
+                    <TableColumn fx:id="colDescripcion" text="Descripción" prefWidth="300" sortable="false"/>
+                    <TableColumn fx:id="colCliente"     text="Cliente"     prefWidth="180" sortable="false"/>
+                    <TableColumn fx:id="colAcciones"    text="Acciones"    prefWidth="120" sortable="false"/>
+                </columns>
+                <placeholder>
+                    <Label text="No hay citas registradas"
+                           style="-fx-text-fill: #8b949e; -fx-font-size: 13px;"/>
+                </placeholder>
+            </TableView>
+
+        </VBox>
+    </center>
+
+</BorderPane>

@@ -1,0 +1,144 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.control.*?>
+
+<VBox xmlns:fx="http://javafx.com/fxml"
+      fx:controller="com.demoapp.controller.FormularioPresupuestoController"
+      stylesheets="@../css/dashboard.css"
+      spacing="0" prefWidth="760" prefHeight="680"
+      style="-fx-background-color: #0d1117;">
+
+    <!-- CABECERA -->
+    <HBox style="-fx-background-color: #161b22; -fx-padding: 20px 24px;
+                 -fx-border-color: transparent transparent #21262d transparent; -fx-border-width: 0 0 1px 0;"
+          alignment="CENTER_LEFT" spacing="24">
+        <VBox spacing="3">
+            <Label fx:id="lblNumero" text="NUEVO PRESUPUESTO"
+                   style="-fx-text-fill: #00ff88; -fx-font-size: 16px; -fx-font-weight: bold;"/>
+            <Label fx:id="lblFecha" text=""
+                   style="-fx-text-fill: #8b949e; -fx-font-size: 12px;"/>
+        </VBox>
+        <Region HBox.hgrow="ALWAYS"/>
+        <VBox spacing="5" alignment="CENTER_RIGHT">
+            <Label text="Estado" styleClass="field-label"/>
+            <ComboBox fx:id="comboEstado" prefWidth="140" styleClass="combo-field"/>
+        </VBox>
+    </HBox>
+
+    <!-- CUERPO -->
+    <ScrollPane fitToWidth="true" VBox.vgrow="ALWAYS"
+                style="-fx-background:#0d1117; -fx-background-color:#0d1117;">
+        <VBox spacing="20" style="-fx-padding: 24px;">
+
+            <!-- DATOS DEL PRESUPUESTO -->
+            <HBox spacing="16">
+                <VBox spacing="5" HBox.hgrow="ALWAYS">
+                    <Label text="Cliente *" styleClass="field-label"/>
+                    <ComboBox fx:id="comboCliente" maxWidth="Infinity" styleClass="combo-field"
+                              promptText="Selecciona un cliente"/>
+                </VBox>
+                <VBox spacing="5" HBox.hgrow="ALWAYS">
+                    <Label text="Reparación asociada" styleClass="field-label"/>
+                    <ComboBox fx:id="comboReparacion" maxWidth="Infinity" styleClass="combo-field"
+                              promptText="Sin reparación asociada"/>
+                </VBox>
+            </HBox>
+
+            <!-- LÍNEAS DEL PRESUPUESTO -->
+            <VBox spacing="10" style="-fx-background-color:#161b22; -fx-padding:16px;
+                                      -fx-background-radius:8px; -fx-border-color:#21262d;
+                                      -fx-border-radius:8px;">
+                <Label text="Líneas del presupuesto" styleClass="panel-title"/>
+
+                <!-- Formulario nueva línea -->
+                <HBox spacing="10" alignment="BOTTOM_LEFT">
+                    <VBox spacing="4" HBox.hgrow="ALWAYS">
+                        <Label text="Concepto" styleClass="field-label"/>
+                        <TextField fx:id="campoConcepto" promptText="Ej: Mano de obra, Pantalla iPhone 13..."
+                                   styleClass="input-field"/>
+                    </VBox>
+                    <VBox spacing="4">
+                        <Label text="Cant." styleClass="field-label"/>
+                        <TextField fx:id="campoCantidad" promptText="1" styleClass="input-field" prefWidth="60"/>
+                    </VBox>
+                    <VBox spacing="4">
+                        <Label text="Precio unit. (€)" styleClass="field-label"/>
+                        <TextField fx:id="campoPrecio" promptText="0.00" styleClass="input-field" prefWidth="100"/>
+                    </VBox>
+                    <VBox spacing="4">
+                        <Label text="IVA" styleClass="field-label"/>
+                        <ComboBox fx:id="comboIva" prefWidth="80" styleClass="combo-field"/>
+                    </VBox>
+                    <Button text="+ Añadir" onAction="#onAnadirLinea" styleClass="btn-primary"
+                            style="-fx-padding: 9px 16px;"/>
+                </HBox>
+
+                <!-- Tabla de líneas -->
+                <TableView fx:id="tablaLineas" prefHeight="200">
+                    <columns>
+                        <TableColumn fx:id="colConcepto"  text="Concepto"    prefWidth="240" sortable="false"/>
+                        <TableColumn fx:id="colCantidad"  text="Cant."       prefWidth="55"  sortable="false"/>
+                        <TableColumn fx:id="colPrecio"    text="P. Unit."    prefWidth="90"  sortable="false"/>
+                        <TableColumn fx:id="colIva"       text="IVA"         prefWidth="55"  sortable="false"/>
+                        <TableColumn fx:id="colSubtotal"  text="Total línea" prefWidth="100" sortable="false"/>
+                        <TableColumn fx:id="colEliminar"  text=""            prefWidth="50"  sortable="false"/>
+                    </columns>
+                    <placeholder>
+                        <Label text="Añade líneas al presupuesto" styleClass="page-subtitle"/>
+                    </placeholder>
+                </TableView>
+            </VBox>
+
+            <!-- TOTALES -->
+            <HBox spacing="0" alignment="CENTER_RIGHT">
+                <VBox spacing="0" style="-fx-background-color:#161b22; -fx-padding:16px 24px;
+                                         -fx-background-radius:8px; -fx-border-color:#21262d;
+                                         -fx-border-radius:8px; -fx-min-width:260px;">
+                    <HBox alignment="CENTER_LEFT" spacing="20" style="-fx-padding:4px 0;">
+                        <Label text="Base imponible:" style="-fx-text-fill:#8b949e; -fx-font-size:13px;"/>
+                        <Region HBox.hgrow="ALWAYS"/>
+                        <Label fx:id="lblBaseImponible" text="0.00 €"
+                               style="-fx-text-fill:#c9d1d9; -fx-font-size:13px;"/>
+                    </HBox>
+                    <HBox alignment="CENTER_LEFT" spacing="20" style="-fx-padding:4px 0;">
+                        <Label text="Total IVA:" style="-fx-text-fill:#8b949e; -fx-font-size:13px;"/>
+                        <Region HBox.hgrow="ALWAYS"/>
+                        <Label fx:id="lblTotalIva" text="0.00 €"
+                               style="-fx-text-fill:#c9d1d9; -fx-font-size:13px;"/>
+                    </HBox>
+                    <Region style="-fx-background-color:#21262d; -fx-pref-height:1px; -fx-margin:6px 0;"/>
+                    <HBox alignment="CENTER_LEFT" spacing="20" style="-fx-padding:8px 0 0 0;">
+                        <Label text="TOTAL:" style="-fx-text-fill:#c9d1d9; -fx-font-size:16px; -fx-font-weight:bold;"/>
+                        <Region HBox.hgrow="ALWAYS"/>
+                        <Label fx:id="lblTotalFactura" text="0.00 €"
+                               style="-fx-text-fill:#00ff88; -fx-font-size:20px; -fx-font-weight:bold;"/>
+                    </HBox>
+                </VBox>
+            </HBox>
+
+            <!-- NOTAS -->
+            <VBox spacing="5">
+                <Label text="Notas / Condiciones (aparecerán en la factura)" styleClass="field-label"/>
+                <TextArea fx:id="campoNotas"
+                          promptText="Ej: Garantía de 3 meses en piezas. Pago en 30 días..."
+                          prefRowCount="3" wrapText="true"
+                          style="-fx-background-color:#161b22; -fx-text-fill:#c9d1d9;
+                                 -fx-prompt-text-fill:#3d444d; -fx-border-color:#21262d;
+                                 -fx-border-radius:6px; -fx-background-radius:6px; -fx-padding:9px 12px;"/>
+            </VBox>
+
+            <!-- ERROR -->
+            <Label fx:id="lblError" text="" wrapText="true" styleClass="error-label"/>
+
+        </VBox>
+    </ScrollPane>
+
+    <!-- PIE -->
+    <HBox spacing="10" alignment="CENTER_RIGHT"
+          style="-fx-background-color:#161b22; -fx-padding:16px 24px;
+                 -fx-border-color:#21262d transparent transparent transparent; -fx-border-width:1px 0 0 0;">
+        <Button text="Cancelar" onAction="#onCancelar" styleClass="btn-secondary"/>
+        <Button text="💾  Guardar presupuesto" onAction="#onGuardar" styleClass="btn-primary"/>
+    </HBox>
+
+</VBox>

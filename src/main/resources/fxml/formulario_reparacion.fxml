@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.control.*?>
+
+<VBox xmlns:fx="http://javafx.com/fxml"
+      fx:controller="com.demoapp.controller.FormularioReparacionController"
+      stylesheets="@../css/dashboard.css"
+      spacing="14" prefWidth="480"
+      style="-fx-background-color: #0d1117; -fx-padding: 28px;">
+    <Label fx:id="lblTitulo" text="Nueva reparación" styleClass="modal-title"/>
+    <Label text="Rellena los datos de la reparación" styleClass="modal-subtitle"/>
+    <Region prefHeight="4"/>
+    <VBox spacing="5">
+        <Label text="Cliente *" styleClass="field-label"/>
+        <ComboBox fx:id="comboCliente" promptText="Selecciona un cliente" maxWidth="Infinity" styleClass="combo-field"/>
+    </VBox>
+    <VBox spacing="5">
+        <Label text="Dispositivo *" styleClass="field-label"/>
+        <TextField fx:id="campoDispositivo" promptText="Ej: iPhone 13, Samsung S21..." styleClass="input-field" maxWidth="Infinity"/>
+    </VBox>
+    <VBox spacing="5">
+        <Label text="Descripción del problema" styleClass="field-label"/>
+        <TextArea fx:id="campoDescripcion" promptText="Describe el problema o avería..." prefRowCount="3" wrapText="true"
+                  style="-fx-background-color: #161b22; -fx-text-fill: #c9d1d9; -fx-prompt-text-fill: #3d444d;
+                         -fx-border-color: #21262d; -fx-border-radius: 6px; -fx-background-radius: 6px; -fx-padding: 9px 12px;"/>
+    </VBox>
+    <HBox spacing="12">
+        <VBox spacing="5" HBox.hgrow="ALWAYS">
+            <Label text="Estado *" styleClass="field-label"/>
+            <ComboBox fx:id="comboEstado" promptText="Estado" maxWidth="Infinity" styleClass="combo-field"/>
+        </VBox>
+        <VBox spacing="5" HBox.hgrow="ALWAYS">
+            <Label text="Técnico asignado" styleClass="field-label"/>
+            <ComboBox fx:id="comboTecnico" promptText="Sin asignar" maxWidth="Infinity" styleClass="combo-field"/>
+        </VBox>
+    </HBox>
+    <Label fx:id="lblError" text="" wrapText="true" styleClass="error-label"/>
+    <HBox spacing="10" alignment="CENTER_RIGHT">
+        <Button text="Cancelar" onAction="#onCancelar" styleClass="btn-secondary"/>
+        <Button text="Guardar" onAction="#onGuardar" styleClass="btn-primary"/>
+    </HBox>
+</VBox>

@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<HBox xmlns:fx="http://javafx.com/fxml"
+      fx:controller="com.demoapp.controller.RegisterController"
+      stylesheets="@../css/dashboard.css"
+      style="-fx-background-color:#0d1117;"
+      minWidth="820" minHeight="540">
+
+    <!-- Panel izquierdo -->
+    <VBox spacing="16" alignment="CENTER_LEFT" HBox.hgrow="ALWAYS" minWidth="320"
+          style="-fx-background-color:#161b22;-fx-padding:50px 44px;
+                 -fx-border-color:transparent #21262d transparent transparent;
+                 -fx-border-width:0 1px 0 0;">
+        <Label text="FixLab" style="-fx-text-fill:#00ff88;-fx-font-size:34px;-fx-font-weight:bold;"/>
+        <Label text="Crea tu cuenta para comenzar"
+               style="-fx-text-fill:#8b949e;-fx-font-size:13px;" wrapText="true"/>
+        <Region prefHeight="16"/>
+        <HBox spacing="10" alignment="CENTER_LEFT">
+            <Label text="✓" style="-fx-text-fill:#00ff88;"/>
+            <Label text="Acceso según tu rol" style="-fx-text-fill:#c9d1d9;-fx-font-size:13px;"/>
+        </HBox>
+        <HBox spacing="10" alignment="CENTER_LEFT">
+            <Label text="✓" style="-fx-text-fill:#00ff88;"/>
+            <Label text="Panel personalizado" style="-fx-text-fill:#c9d1d9;-fx-font-size:13px;"/>
+        </HBox>
+        <HBox spacing="10" alignment="CENTER_LEFT">
+            <Label text="✓" style="-fx-text-fill:#00ff88;"/>
+            <Label text="Gestión segura de datos" style="-fx-text-fill:#c9d1d9;-fx-font-size:13px;"/>
+        </HBox>
+        <Region VBox.vgrow="ALWAYS"/>
+        <Label text="v2.0.0" style="-fx-text-fill:#3d444d;-fx-font-size:11px;"/>
+    </VBox>
+
+    <!-- Panel derecho -->
+    <VBox spacing="12" alignment="CENTER" HBox.hgrow="ALWAYS"
+          style="-fx-padding:50px 48px;">
+        <Label text="Crear cuenta"
+               style="-fx-text-fill:#c9d1d9;-fx-font-size:22px;-fx-font-weight:bold;"/>
+        <Label text="Completa los datos para registrarte"
+               style="-fx-text-fill:#8b949e;-fx-font-size:12px;"/>
+        <Region prefHeight="8"/>
+        <VBox spacing="6" maxWidth="300">
+            <Label text="Usuario" styleClass="field-label"/>
+            <TextField fx:id="usernameField" promptText="Nombre de usuario"
+                       styleClass="input-field" maxWidth="Infinity"/>
+        </VBox>
+        <VBox spacing="6" maxWidth="300">
+            <Label text="Contraseña" styleClass="field-label"/>
+            <PasswordField fx:id="passwordField" promptText="Contraseña"
+                           styleClass="input-field" maxWidth="Infinity"/>
+        </VBox>
+        <VBox spacing="6" maxWidth="300">
+            <Label text="Repetir contraseña" styleClass="field-label"/>
+            <PasswordField fx:id="confirmPasswordField" promptText="Repite la contraseña"
+                           styleClass="input-field" maxWidth="Infinity"/>
+        </VBox>
+        <VBox spacing="6" maxWidth="300">
+            <Label text="Rol" styleClass="field-label"/>
+            <ComboBox fx:id="rolComboBox" promptText="Selecciona un rol"
+                      styleClass="combo-field" maxWidth="Infinity"/>
+        </VBox>
+        <Button text="Registrarme" onAction="#onRegister" styleClass="btn-primary"
+                maxWidth="300" style="-fx-pref-width:300px;-fx-padding:11px;"/>
+        <Hyperlink text="← Volver al login" onAction="#onBackToLogin"
+                   style="-fx-text-fill:#58a6ff;-fx-border-color:transparent;-fx-font-size:12px;"/>
+        <Label fx:id="errorLabel" styleClass="error-label" maxWidth="300" wrapText="true"/>
+    </VBox>
+</HBox>

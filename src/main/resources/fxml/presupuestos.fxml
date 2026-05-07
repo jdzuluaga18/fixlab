@@ -1,0 +1,74 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.control.*?>
+
+<BorderPane xmlns:fx="http://javafx.com/fxml"
+            fx:controller="com.demoapp.controller.PresupuestosController"
+            stylesheets="@../css/dashboard.css"
+            style="-fx-background-color:#0d1117;">
+    <top>
+        <HBox styleClass="topbar" alignment="CENTER_LEFT" spacing="16">
+            <Label fx:id="lblReloj" text="00:00:00" styleClass="topbar-clock"/>
+            <Region HBox.hgrow="ALWAYS"/>
+            <StackPane styleClass="topbar-avatar">
+                <Label fx:id="lblUsuario" text="USER" styleClass="topbar-avatar-label"/>
+            </StackPane>
+        </HBox>
+    </top>
+    <left>
+        <VBox styleClass="sidebar" spacing="0">
+            <Label text="FixLab" styleClass="sidebar-logo"/>
+            <Label text="Taller de reparaciones" styleClass="sidebar-subtitle"/>
+            <Region style="-fx-background-color:#21262d;-fx-pref-height:1px;-fx-min-height:1px;"/>
+            <Label text="NAVEGACIÓN" styleClass="sidebar-section"/>
+            <Button text="🏠  Dashboard"    onAction="#irDashboard"    styleClass="sidebar-btn"/>
+            <Button text="👤  Clientes"     onAction="#irClientes"     styleClass="sidebar-btn"/>
+            <Button text="🔧  Reparaciones" onAction="#irReparaciones" styleClass="sidebar-btn"/>
+            <Button text="📅  Agenda"       onAction="#irAgenda"       styleClass="sidebar-btn"/>
+            <Button text="🧾  Presupuestos" onAction="#irPresupuestos" styleClass="sidebar-btn sidebar-btn-active"/>
+            <Region VBox.vgrow="ALWAYS"/>
+            <Region style="-fx-background-color:#21262d;-fx-pref-height:1px;-fx-min-height:1px;"/>
+            <Button text="⏻  Cerrar sesión" onAction="#onLogout" styleClass="btn-logout"/>
+        </VBox>
+    </left>
+    <center>
+        <VBox styleClass="content-area" spacing="20">
+
+            <HBox alignment="CENTER_LEFT">
+                <VBox spacing="4">
+                    <Label text="Presupuestos y facturas" styleClass="page-title"/>
+                    <Label text="Crea presupuestos con IVA y haz seguimiento de su estado" styleClass="page-subtitle"/>
+                </VBox>
+                <Region HBox.hgrow="ALWAYS"/>
+                <Button text="+ Nuevo presupuesto" onAction="#onNuevoPresupuesto" styleClass="btn-primary"/>
+            </HBox>
+
+            <HBox spacing="12" alignment="CENTER_LEFT">
+                <Button text="Ver todos" onAction="#onVerTodos" styleClass="btn-secondary"/>
+                <ComboBox fx:id="filtroEstado" promptText="Filtrar por estado"
+                          onAction="#onFiltrarEstado" styleClass="combo-field"
+                          prefWidth="190" minWidth="150"/>
+                <Region HBox.hgrow="ALWAYS"/>
+                <Label fx:id="lblTotal" text="0 presupuestos" styleClass="count-label"/>
+            </HBox>
+
+            <TableView fx:id="tablaPresupuestos" VBox.vgrow="ALWAYS"
+                       >
+                <columns>
+                    <TableColumn fx:id="colNumero"   text="Número"    minWidth="130" maxWidth="160"/>
+                    <TableColumn fx:id="colCliente"  text="Cliente"   minWidth="150"/>
+                    <TableColumn fx:id="colFecha"    text="Fecha"     minWidth="90"  maxWidth="115"/>
+                    <TableColumn fx:id="colEstado"   text="Estado"    minWidth="110" maxWidth="140"/>
+                    <TableColumn fx:id="colBase"     text="Base"      minWidth="90"  maxWidth="115"/>
+                    <TableColumn fx:id="colIva"      text="IVA"       minWidth="80"  maxWidth="100"/>
+                    <TableColumn fx:id="colTotal"    text="Total"     minWidth="90"  maxWidth="115"/>
+                    <TableColumn fx:id="colAcciones" text="Acciones"  minWidth="90"  maxWidth="110"/>
+                </columns>
+                <placeholder>
+                    <Label text="No hay presupuestos registrados" styleClass="page-subtitle"/>
+                </placeholder>
+            </TableView>
+
+        </VBox>
+    </center>
+</BorderPane>

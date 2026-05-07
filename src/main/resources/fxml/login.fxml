@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<HBox xmlns:fx="http://javafx.com/fxml"
+      fx:controller="com.demoapp.controller.LoginController"
+      stylesheets="@../css/dashboard.css"
+      style="-fx-background-color:#0d1117;"
+      minWidth="820" minHeight="500">
+
+    <!-- Panel izquierdo — info -->
+    <VBox spacing="16" alignment="CENTER_LEFT" HBox.hgrow="ALWAYS" minWidth="320"
+          style="-fx-background-color:#161b22;-fx-padding:50px 44px;
+                 -fx-border-color:transparent #21262d transparent transparent;
+                 -fx-border-width:0 1px 0 0;">
+        <Label text="FixLab" style="-fx-text-fill:#00ff88;-fx-font-size:34px;-fx-font-weight:bold;"/>
+        <Label text="Sistema de gestión de reparaciones"
+               style="-fx-text-fill:#8b949e;-fx-font-size:13px;" wrapText="true"/>
+        <Region prefHeight="16"/>
+        <HBox spacing="10" alignment="CENTER_LEFT">
+            <Label text="✓" style="-fx-text-fill:#00ff88;"/>
+            <Label text="Gestión de clientes y órdenes" style="-fx-text-fill:#c9d1d9;-fx-font-size:13px;"/>
+        </HBox>
+        <HBox spacing="10" alignment="CENTER_LEFT">
+            <Label text="✓" style="-fx-text-fill:#00ff88;"/>
+            <Label text="Seguimiento de reparaciones" style="-fx-text-fill:#c9d1d9;-fx-font-size:13px;"/>
+        </HBox>
+        <HBox spacing="10" alignment="CENTER_LEFT">
+            <Label text="✓" style="-fx-text-fill:#00ff88;"/>
+            <Label text="Presupuestos y facturas" style="-fx-text-fill:#c9d1d9;-fx-font-size:13px;"/>
+        </HBox>
+        <HBox spacing="10" alignment="CENTER_LEFT">
+            <Label text="✓" style="-fx-text-fill:#00ff88;"/>
+            <Label text="Agenda y citas" style="-fx-text-fill:#c9d1d9;-fx-font-size:13px;"/>
+        </HBox>
+        <Region VBox.vgrow="ALWAYS"/>
+        <Label text="v2.0.0" style="-fx-text-fill:#3d444d;-fx-font-size:11px;"/>
+    </VBox>
+
+    <!-- Panel derecho — formulario -->
+    <VBox spacing="14" alignment="CENTER" HBox.hgrow="ALWAYS"
+          style="-fx-padding:50px 48px;">
+        <Label text="Iniciar sesión"
+               style="-fx-text-fill:#c9d1d9;-fx-font-size:22px;-fx-font-weight:bold;"/>
+        <Label text="Ingresa tus credenciales para continuar"
+               style="-fx-text-fill:#8b949e;-fx-font-size:12px;"/>
+        <Region prefHeight="10"/>
+        <VBox spacing="6" maxWidth="300">
+            <Label text="Usuario" styleClass="field-label"/>
+            <TextField fx:id="usernameField" promptText="Tu usuario"
+                       styleClass="input-field" maxWidth="Infinity"/>
+        </VBox>
+        <VBox spacing="6" maxWidth="300">
+            <Label text="Contraseña" styleClass="field-label"/>
+            <PasswordField fx:id="passwordField" promptText="Tu contraseña"
+                           styleClass="input-field" maxWidth="Infinity"/>
+        </VBox>
+        <Button text="Entrar" onAction="#onLogin" styleClass="btn-primary"
+                maxWidth="300" style="-fx-pref-width:300px;-fx-padding:11px;"/>
+        <Hyperlink text="¿No tienes cuenta? Regístrate" onAction="#onRegister"
+                   style="-fx-text-fill:#58a6ff;-fx-border-color:transparent;-fx-font-size:12px;"/>
+        <Label fx:id="errorLabel" styleClass="error-label" maxWidth="300" wrapText="true"/>
+    </VBox>
+</HBox>
